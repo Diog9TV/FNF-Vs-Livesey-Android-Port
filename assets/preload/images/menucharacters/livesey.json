@@ -1,0 +1,10 @@
+{
+	"idle_anim": "idle",
+	"image": "menu_livesey",
+	"position": [
+		80,
+		80
+	],
+	"scale": 0.75,
+	"confirm_anim": "M Dad Idle"
+}

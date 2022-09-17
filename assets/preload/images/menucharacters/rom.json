@@ -1,0 +1,10 @@
+{
+	"idle_anim": "idle",
+	"image": "Menu_rom",
+	"position": [
+		80,
+		166
+	],
+	"scale": 0.55,
+	"confirm_anim": "idle"
+}

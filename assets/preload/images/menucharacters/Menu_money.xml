@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="money.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="0" y="0" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0001" x="0" y="0" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0002" x="465" y="0" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0003" x="465" y="0" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0004" x="0" y="327" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0005" x="0" y="327" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0006" x="465" y="327" width="465" height="327" frameX="0" frameY="0" frameWidth="467" frameHeight="327"/>
+	<SubTexture name="idle0007" x="0" y="654" width="466" height="317" frameX="-1" frameY="-10" frameWidth="467" frameHeight="327"/>
+</TextureAtlas>
