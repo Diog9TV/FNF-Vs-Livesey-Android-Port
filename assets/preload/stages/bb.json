@@ -1,0 +1,9 @@
+{
+	"directory": "benbow",
+	"defaultZoom": 0.9,
+	"isPixelStage": false,
+
+	"boyfriend": [1040, 70],
+	"girlfriend": [740,20],
+	"opponent": [400, 30]
+}
