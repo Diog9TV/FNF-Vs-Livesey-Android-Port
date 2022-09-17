@@ -1,0 +1,39 @@
+{
+	"dialogue": [
+		{
+			"speed": 0.05,
+			"portrait": "dialogl2",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ha-ha, what do you have here? Rum?!"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Beep."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "dialogl2",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ha-ha-ha, did you know that alcohol is bad for your health?"
+		},
+		{
+			"speed": 0.05,
+			"portrait": "bf",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Boop."
+		},
+		{
+			"speed": 0.05,
+			"portrait": "dialogl2",
+			"boxState": "normal",
+			"expression": "talk",
+			"text": "Ha-h/a. Great. Then I'll tell you about it in more detail."
+		}
+	]
+}
