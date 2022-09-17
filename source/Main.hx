@@ -1,6 +1,13 @@
 package;
 
-import flixel.graphics.FlxGraphic;
+#if desktop
+import Discord.DiscordClient;
+import sys.thread.Thread;
+#end
+import openfl.display.BlendMode;
+import openfl.text.TextFormat;
+import openfl.display.Application;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -9,37 +16,24 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
-import openfl.display.StageScaleMode;
-import lime.system.System;
-
-//crash handler stuff
-#if CRASH_HANDLER
-import lime.app.Application;
-import openfl.events.UncaughtErrorEvent;
-import haxe.CallStack;
-import haxe.io.Path;
-#if desktop
-import Discord.DiscordClient;
-#end
-import sys.FileSystem;
-import openfl.utils.Assets as OpenFlAssets;
-import sys.io.File;
-import sys.io.Process;
-#end
 
 using StringTools;
 
 class Main extends Sprite
 {
-	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
-	var framerate:Int = 60; // How many frames per second the game should run at.
-	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
+	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var initialState:Class<FlxState> = states.InitState; // The FlxState the game starts with.
+	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
+	public static var framerate:Int = 60; // How many frames per second the game should run at.
+	#if HAXEFLIXEL_LOGO
+	var skipSplash:Bool = false;
+	#else
+	var skipSplash:Bool = true; // CRINGE! Why would you hide it????
+	#end
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-	public static var fpsVar:FPS;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
-	
-	public static var path:String = System.applicationStorageDirectory;
 
 	public static function main():Void
 	{
@@ -72,67 +66,53 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		addChild(new FlxGame(0, 0, TitleState, 1, 60, 60, true, false));
+		var stageWidth:Int = Lib.current.stage.stageWidth;
+		var stageHeight:Int = Lib.current.stage.stageHeight;
 
-		fpsVar = new FPS(10, 3, 0xFFFFFF);
-		addChild(fpsVar);
-		Lib.current.stage.align = "tl";
-		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		if(fpsVar != null) {
-			fpsVar.visible = ClientPrefs.showFPS;
-		}
-
-		#if html5
-		FlxG.autoPause = false;
-		FlxG.mouse.visible = false;
-		#end
-		
-		#if CRASH_HANDLER
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-		#end
-	}
-
-	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
-	// very cool person for real they don't get enough credit for their work
-	#if CRASH_HANDLER
-	function onCrash(e:UncaughtErrorEvent):Void
-	{
-		var errMsg:String = "";
-		var path:String;
-		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
-		var dateNow:String = Date.now().toString();
-
-		dateNow = dateNow.replace(" ", "_");
-		dateNow = dateNow.replace(":", "'");
-
-		path = Main.path + "./crash/" + "PsychEngine_" + dateNow + ".txt";
-
-		for (stackItem in callStack)
+		if (zoom == -1)
 		{
-			switch (stackItem)
-			{
-				case FilePos(s, file, line, column):
-					errMsg += file + " (line " + line + ")\n";
-				default:
-					Sys.println(stackItem);
-			}
+			var ratioX:Float = stageWidth / gameWidth;
+			var ratioY:Float = stageHeight / gameHeight;
+			zoom = Math.min(ratioX, ratioY);
+			gameWidth = Math.ceil(stageWidth / zoom);
+			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
-		if (!OpenFlAssets.exists("./crash/"))
-			FileSystem.createDirectory(Main.path + "./crash/");
-
-		File.saveContent(path, errMsg + "\n");
-
-		Sys.println(errMsg);
-		Sys.println("Crash dump saved in " + Path.normalize(path));
-
-		Application.current.window.alert(errMsg, "Error!");
-                #if desktop
-		DiscordClient.shutdown();
-                #end
-		Sys.exit(1);
+		#if !mobile
+		addChild(new ui.FPSMem(10, 3, 0xFFFFFF));
+		#end
 	}
-	#end
+
+	public static function setFPSCap(cap:Int)
+	{
+		Main.framerate=cap;
+		updateFramerate();
+	}
+
+	// thank u forever engine
+	// https://github.com/Yoshubs/Forever-Engine/blob/master/source/Main.hx
+
+	public static function updateFramerate(){
+		if (Main.framerate > FlxG.updateFramerate)
+		{
+			FlxG.updateFramerate = Main.framerate;
+			FlxG.drawFramerate = Main.framerate;
+		}
+		else
+		{
+			FlxG.drawFramerate = Main.framerate;
+			FlxG.updateFramerate = Main.framerate;
+		}
+	}
+
+	public static function adjustFPS(num:Float):Float{
+		return num * (60/Main.getFPSCap());
+	}
+
+	public static function getFPSCap():Float
+	{
+		return FlxG.drawFramerate;
+	}
 }
