@@ -1,0 +1,194 @@
+{
+	"song": {
+		"speed": 3.4,
+		"stage": "bb",
+		"player1": "bf",
+		"player2": "livesey",
+		"player3": null,
+		"events": [
+			[
+				10243.9024390244,
+				[
+					[
+						"Add Camera Zoom",
+						"2",
+						""
+					],
+					[
+						"Play Animation",
+						"1",
+						""
+					],
+					[
+						"Change Character",
+						"2",
+						"mmm"
+					],
+					[
+						"Change Character",
+						"1",
+						"dlivesey"
+					]
+				]
+			],
+			[
+				46829.2682926829,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				48292.6829268293,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				49756.0975609756,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				51219.512195122,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				52682.9268292683,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				54146.3414634146,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				55609.756097561,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				57804.8780487805,
+				[
+					[
+						"Screen Shake",
+						"1, .020",
+						""
+					]
+				]
+			],
+			[
+				93658.5365853657,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				95121.9512195121,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				96585.3658536584,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				98048.7804878047,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				99512.1951219511,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				100975.609756097,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			],
+			[
+				102439.024390244,
+				[
+					[
+						"Add Camera Zoom",
+						"0.03",
+						""
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "notesplashes",
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 164,
+		"arrowSkin": "",
+		"needsVoices": true,
+		"song": "death"
+	}
+}
