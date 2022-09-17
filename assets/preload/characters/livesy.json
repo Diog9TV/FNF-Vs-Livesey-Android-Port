@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-347,
+				121
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				-281,
+				124
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [
+				-210,
+				119
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [
+				-445,
+				105
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [
+				-331,
+				118
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/livesey",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "livesy",
+	"flip_x": false,
+	"healthbar_colors": [
+		189,
+		255,
+		255
+	],
+	"camera_position": [
+		10,
+		-90
+	],
+	"sing_duration": 4,
+	"scale": 1.2
+}
